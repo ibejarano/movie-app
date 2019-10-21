@@ -20,7 +20,7 @@ const reducer = (state, action ) => {
         loading: true,
         errorMessage: null
         };
-    case "SEARCG_MOVIES_SUCCESS":
+    case "SEARCH_MOVIES_SUCCESS":
       return {
         ...state,
         movies: action.payload,
@@ -82,7 +82,7 @@ const App = () => {
   };
 
   const { movies, errorMessage, loading} = state;
-
+  console.log(movies)
   return (
     <div className="App">
       <Header text="MOVIE APP by IB" />
