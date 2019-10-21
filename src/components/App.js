@@ -4,7 +4,7 @@ import Header from './Header';
 import Search from './Search';
 import Movie from './Movie';
 
-const MOVIE_API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=398fe81c";
+const MOVIE_API_URL = "http://www.omdbapi.com/?s=man&apikey=398fe81c";
 
 const initialState = {
   loading: true,
@@ -23,7 +23,8 @@ const reducer = (state, action ) => {
     case "SEARCH_MOVIES_SUCCESS":
       return {
         ...state,
-        movies: action.payload,
+        loading: false,
+        movies: action.payload
       };
     case "SEARCH_MOVIES_FAILURE":
       return {
@@ -91,8 +92,6 @@ const App = () => {
       <div className="movies">
         {loading && !errorMessage ? (
           <span>loading...</span>
-        ) : errorMessage ? (
-          <div className="errorMessage">{errorMessage}</div>
         ) : (
           movies.map((movie, index) => (
             <Movie key={`${index}-${movie.Title}`} movie={movie} />
